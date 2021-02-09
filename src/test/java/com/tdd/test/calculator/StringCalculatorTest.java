@@ -40,4 +40,20 @@ public class StringCalculatorTest {
 		int result = stringCalculator.add(test);
 		assertEquals(15,result);
 	}
+	
+	@Test
+	public void testAddTwoNumbersInNewLine() {
+		String test = "1\n2";
+		StringCalculator stringCalculator = new StringCalculator();
+		int result = stringCalculator.add(test);
+		assertEquals(3,result);
+	}
+	
+	@Test
+	public void testAddManyNumbersInNewLine() {
+		String test = "1,2,3,4\n5";
+		StringCalculator stringCalculator = new StringCalculator();
+		int result = stringCalculator.add(test);
+		assertEquals(15,result);
+	}
 }

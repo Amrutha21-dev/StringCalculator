@@ -6,7 +6,7 @@ public class StringCalculator {
 			return 0;
 		}
 		else {
-			String[] numArray = numbers.split(",");
+			String[] numArray = numbers.split(",|\n");
 			int count = 0;
 			for(String num : numArray) {
 				count += Integer.parseInt(num);
