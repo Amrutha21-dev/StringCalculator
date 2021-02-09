@@ -1,17 +1,23 @@
 package com.tdd.main.exception;
 
+import java.util.List;
+
 public class NegativeNumberException extends RuntimeException{
 	
-	private int negativeNumber;
+	private List<Integer> negativeNumbers;
 	
-	public NegativeNumberException(int n) {
-		negativeNumber = n;
+	public NegativeNumberException(List<Integer> n) {
+		negativeNumbers = n;
 	}
 	 
 	static final long serialVersionUID = 1L;
 	
 	@Override
 	public String getMessage() {
-		return "negatives not allowed " + negativeNumber;
+		String message = "negatives not allowed";
+		for(Integer i:negativeNumbers) {
+			message = message + " "+ i;
+		}
+		return message;
 	}
 }

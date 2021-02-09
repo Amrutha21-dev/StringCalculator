@@ -1,7 +1,6 @@
 package com.tdd.test.calculator;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
 
 import org.junit.Test;
 
@@ -76,6 +75,19 @@ public class StringCalculatorTest {
 		}
 		catch(NegativeNumberException e) {
 			assertEquals("negatives not allowed -2",e.getMessage());
+			throw e;
+		}
+	}
+	
+	@Test(expected = NegativeNumberException.class)
+	public void testAddManyNumbersIncludingManyNegatives() {
+		String test = "1\n-2,-3";
+		StringCalculator stringCalculator = new StringCalculator();
+		try {
+			stringCalculator.add(test);
+		}
+		catch(NegativeNumberException e) {
+			assertEquals("negatives not allowed -2 -3",e.getMessage());
 			throw e;
 		}
 	}
