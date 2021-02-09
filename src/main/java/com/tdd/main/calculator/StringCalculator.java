@@ -2,6 +2,7 @@ package com.tdd.main.calculator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import com.tdd.main.exception.NegativeNumberException;
 
@@ -23,6 +24,13 @@ public class StringCalculator {
 				char delimiter = numbers.charAt(2);
 				regex = ",|\n|"+delimiter;
 				numbers = numbers.substring(4);
+			}
+			else if(numbers.contains("//[")) {
+				String delimiter = numbers.substring(numbers.indexOf('[')+1,
+						numbers.indexOf(']'));
+				delimiter = Pattern.quote(delimiter);
+				regex = ",|\n|"+delimiter;
+				numbers = numbers.substring(numbers.indexOf(']')+2);
 			}
 			String[] numArray = numbers.split(regex);
 			List<Integer> negativeNumbers = new ArrayList<>();
