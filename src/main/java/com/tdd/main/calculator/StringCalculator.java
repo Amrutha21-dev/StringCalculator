@@ -6,7 +6,14 @@ import java.util.List;
 import com.tdd.main.exception.NegativeNumberException;
 
 public class StringCalculator {
+	
+	private static int calledCount = 0;
+	
+	public static int getCalledCount() {
+		return calledCount;
+	}
 	public int add(String numbers) {
+		calledCount+=1;
 		if(numbers == null || numbers.isEmpty()) {
 			return 0;
 		}
