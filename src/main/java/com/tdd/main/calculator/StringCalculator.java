@@ -32,7 +32,7 @@ public class StringCalculator {
 				if(intNum < 0) {
 					negativeNumbers.add(intNum);
 				}
-				else{
+				else if(intNum <= 1000){
 					count += intNum;
 				}
 			}
