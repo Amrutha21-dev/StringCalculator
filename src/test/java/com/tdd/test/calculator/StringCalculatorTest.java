@@ -138,6 +138,16 @@ public class StringCalculatorTest {
 		assertEquals(6,result);
 	}
 	
+	@Test
+	@Order(12)
+	public void testAddManyNumbersWithManyDelimiter() {
+		count+=1;
+		String test = "//[*][%]\n1*2%3";
+		StringCalculator stringCalculator = new StringCalculator();
+		int result = stringCalculator.add(test);
+		assertEquals(6,result);
+	}
+	
 	@AfterAll
 	public void testGetCalledCount() {
 		int result = StringCalculator.getCalledCount();

@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 
 import com.tdd.main.exception.NegativeNumberException;
 
+
 public class StringCalculator {
 	
 	private static int calledCount = 0;
@@ -22,15 +23,18 @@ public class StringCalculator {
 			String regex = ",|\n";
 			if(numbers.matches("//.\n.*")) {
 				char delimiter = numbers.charAt(2);
-				regex = ",|\n|"+delimiter;
+				regex = regex+"|"+delimiter;
 				numbers = numbers.substring(4);
 			}
-			else if(numbers.contains("//[")) {
-				String delimiter = numbers.substring(numbers.indexOf('[')+1,
-						numbers.indexOf(']'));
-				delimiter = Pattern.quote(delimiter);
-				regex = ",|\n|"+delimiter;
-				numbers = numbers.substring(numbers.indexOf(']')+2);
+			else if (numbers.contains("//[")){
+				while(numbers.contains("[")) {
+					String delimiter = numbers.substring(numbers.indexOf('[')+1,
+							numbers.indexOf(']'));
+					delimiter = Pattern.quote(delimiter);
+					regex = regex+"|"+delimiter;
+					numbers = numbers.substring(numbers.indexOf(']')+1);
+				}
+				numbers = numbers.substring(1);
 			}
 			String[] numArray = numbers.split(regex);
 			List<Integer> negativeNumbers = new ArrayList<>();
