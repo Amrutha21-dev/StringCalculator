@@ -32,4 +32,12 @@ public class StringCalculatorTest {
 		int result = stringCalculator.add(test);
 		assertEquals(3,result);
 	}
+	
+	@Test
+	public void testAddManyNumbers() {
+		String test = "1,2,3,4,5";
+		StringCalculator stringCalculator = new StringCalculator();
+		int result = stringCalculator.add(test);
+		assertEquals(15,result);
+	}
 }
