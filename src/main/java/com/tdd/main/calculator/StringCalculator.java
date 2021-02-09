@@ -1,5 +1,7 @@
 package com.tdd.main.calculator;
 
+import com.tdd.main.exception.NegativeNumberException;
+
 public class StringCalculator {
 	public int add(String numbers) {
 		if(numbers == null || numbers.isEmpty()) {
@@ -15,7 +17,11 @@ public class StringCalculator {
 			String[] numArray = numbers.split(regex);
 			int count = 0;
 			for(String num : numArray) {
-				count += Integer.parseInt(num);
+				int intNum = Integer.parseInt(num);
+				if(intNum < 0) {
+					throw new NegativeNumberException(intNum);
+				}
+				count += intNum;
 			}
 			return count;
 		}
