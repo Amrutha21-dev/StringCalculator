@@ -56,4 +56,12 @@ public class StringCalculatorTest {
 		int result = stringCalculator.add(test);
 		assertEquals(15,result);
 	}
+	
+	@Test
+	public void testAddManyNumbersWithCustomDelimiter() {
+		String test = "//;\n1;2";
+		StringCalculator stringCalculator = new StringCalculator();
+		int result = stringCalculator.add(test);
+		assertEquals(3,result);
+	}
 }
